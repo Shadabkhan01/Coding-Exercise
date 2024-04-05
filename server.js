@@ -6,7 +6,7 @@ const fizzBuzz = require("./index");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/test", (req, res) => {
+app.get("/fizzbuzz", (req, res) => {
   const reqBody = req.body;
   if (!reqBody.data || !reqBody.data.length) {
     res.status(200).send({

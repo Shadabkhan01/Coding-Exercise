@@ -6,7 +6,7 @@ const isInvalid = "Invalid Item";
 const fizzBuzz = (arr) => {
   let res = {};
   for (let i = 0; i < arr.length; i++) {
-    if (isNaN(arr[i]) || !arr[i] || typeof arr[i] == typeof "") {
+    if (isNaN(arr[i]) || !arr[i] || typeof arr[i] === typeof "") {
       res[arr[i]] = isInvalid;
     } else if (arr[i] % 3 === 0 && arr[i] % 5 === 0) {
       res[arr[i]] = fizzbuzz;
