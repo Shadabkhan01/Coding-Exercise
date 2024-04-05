@@ -1,10 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const app = express();
 const PORT = 8080;
 const fizzBuzz = require("./index");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/fizzbuzz", (req, res) => {
   const reqBody = req.body;
