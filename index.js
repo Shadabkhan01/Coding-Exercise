@@ -4,22 +4,21 @@ const fizzbuzz = "FizzBuzz";
 const isInvalid = "Invalid Item";
 
 const fizzBuzz = (arr) => {
+  let res = {};
   for (let i = 0; i < arr.length; i++) {
-    if (isNaN(arr[i])) {
-      console.log(isInvalid);
+    if (isNaN(arr[i]) || !arr[i] || typeof arr[i] == typeof "") {
+      res[arr[i]] = isInvalid;
     } else if (arr[i] % 3 === 0 && arr[i] % 5 === 0) {
-      console.log(fizzbuzz);
+      res[arr[i]] = fizzbuzz;
     } else if (arr[i] % 3 === 0) {
-      console.log(fizz);
+      res[arr[i]] = fizz;
     } else if (arr[i] % 5 === 0) {
-      console.log(buzz);
+      res[arr[i]] = buzz;
     } else {
-      console.log(`Divided ${arr[i]} by 3`);
-      console.log(`Divided ${arr[i]} by 5`);
+      res[arr[i]] = [`Divided ${arr[i]} by 3`, `Divided ${arr[i]} by 5`];
     }
   }
+  return res;
 };
-
-fizzBuzz([1, 3, 5, , 15, "A", 23, 27, 9, 30]);
 
 module.exports.fizzBuzz = fizzBuzz;
