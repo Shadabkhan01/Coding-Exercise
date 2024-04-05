@@ -8,15 +8,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/fizzbuzz", (req, res) => {
-  const reqBody = req.body;
-  if (!reqBody.data || !reqBody.data.length) {
-    res.status(200).send({
-      message: "Invalid data",
-    });
-  } else {
-    const data = fizzBuzz.fizzBuzz(reqBody.data);
-    res.status(200).send(data);
+app.post("/fizzbuzz", (req, res) => {
+  try {
+    const reqBody = req.body;
+    if (!reqBody.data || !reqBody.data.length) {
+      res.status(400).send({
+        message: "Invalid data",
+      });
+    } else {
+      const data = fizzBuzz.fizzBuzz(reqBody.data);
+      res.status(200).send(data);
+    }
+  } catch (error) {
+    res.status(500).send({ message: error.message });
   }
 });
 app.listen(PORT, () => {
